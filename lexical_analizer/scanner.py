@@ -1,5 +1,9 @@
 from string import digits, ascii_lowercase, ascii_uppercase, whitespace, punctuation
 from logging import error
+import argparse
+
+class LexicalError(Exception):
+    pass
 
 
 class Scanner:
@@ -84,7 +88,7 @@ class Scanner:
                     self.state = 21
 
                 else:
-                    raise SyntaxError("In Line {}".format(self._line_number))
+                    raise LexicalError("In Line {}".format(self._line_number))
             elif self.state == 1:
                 char = self._next_char()
 
@@ -251,16 +255,40 @@ class Scanner:
                 self.state = 0
                 yield('Dotdot', 'DOTDOT')
 
-            # else:
-            #     break
+def main():
+    ap = argparse.ArgumentParser()
+
+    ap.add_argument("-i", "--input", required=False, default='test.pp',
+                help="path to input source code file")
+
+    ap.add_argument("-o", "--output", required=False, default='out.txt',
+                help="path to output lexical analyzer.txt")
+
+    args = vars(ap.parse_args())
+
+    with open(args['file']) as f:
+        code = f.read()
+
+    
+    try:
+        handler = Scanner()
+        lex = list(handler.scanner(
+            code))
+        with open(args['output'],'w') as f:
+            a = f.write(str(lex))
+    except LexicalError as err:
+        error('Lexical error occured {}'.format(err))
+
+
 def test():
     try:
         handler = Scanner()
         print(list(handler.scanner(
-            '(.. 12.22E-10  amir  = 10 then else )  [ ] \n  ')))
-    except SyntaxError as err:
-        error('Syntax error occured {}'.format(err))
+            '(.. 12.22E-10  amir  = 10 then else )  [ @] \n  ')))
+    except LexicalError as err:
+        error('Lexical error occured {}'.format(err))
 
 if __name__ == "__main__":
 
-    test()
+    # test()
+    main()
