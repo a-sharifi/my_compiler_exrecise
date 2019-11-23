@@ -1,0 +1,1 @@
+array[1 .. 100] of integer 

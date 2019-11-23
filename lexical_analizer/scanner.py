@@ -1,6 +1,7 @@
 from string import digits, ascii_lowercase, ascii_uppercase, whitespace, punctuation
 from logging import error
 import argparse
+import json 
 
 class LexicalError(Exception):
     pass
@@ -26,8 +27,9 @@ class Scanner:
             'while':  'WHILE',
             'then':   'THEN',
             'of':     'OF',
-            'array':  'ARRAY'
-
+            'array':  'ARRAY',
+            'char' : 'CHAR',
+            'integer' : 'INTEGER'
         }
         self._id = ''
         self._digit = ''
@@ -159,10 +161,10 @@ class Scanner:
                 # get one more useless char in the state 1 and dont need to call LA go next
                 self.state = 0
                 try:
-                    yield ('KEYWORD', self._keywords[self._id])
+                    yield ('keyword', self._keywords[self._id])
 
                 except KeyError:
-                    yield('ID', self._id)
+                    yield('id','ID',self._id)
 
             elif self.state == 11:
                 char = self._next_char()
@@ -225,25 +227,25 @@ class Scanner:
             elif self.state == 17:
                 # get one more useless char in the state 1 and dont need to call LA go next
                 self.state = 0
-                yield ('Digit', self._digit)
+                yield ('digit','DIGIT', self._digit)
 
             # Detect Int digit
             elif self.state == 18:
                 # get one more useless char in the state 1 and dont need to call LA go next
                 self.state = 0
-                yield ('Digit', self._digit)
+                yield ('digit','DIGIT', self._digit)
 
             # Detect Float digit
             elif self.state == 19:
                 # get one more useless char in the state 1 and dont need to call LA go next
                 self.state = 0
-                yield ('Digit', self._digit)
+                yield ('digit','DIGIT', self._digit)
 
             # Detect Punctuation
             elif self.state == 20:
                 self._next_char()
                 self.state = 0
-                yield ('Punctuation', self._punctuations[self._punctuation])
+                yield ('punctuation', self._punctuations[self._punctuation])
 
             elif self.state == 21:
                 char = self._next_char()
@@ -253,7 +255,7 @@ class Scanner:
             elif self.state == 22:
                 self._next_char()
                 self.state = 0
-                yield('Dotdot', 'DOTDOT')
+                yield('dotdot', 'DOTDOT')
 
 def main():
     ap = argparse.ArgumentParser()
@@ -266,7 +268,7 @@ def main():
 
     args = vars(ap.parse_args())
 
-    with open(args['file']) as f:
+    with open(args['input']) as f:
         code = f.read()
 
     
@@ -275,7 +277,7 @@ def main():
         lex = list(handler.scanner(
             code))
         with open(args['output'],'w') as f:
-            a = f.write(str(lex))
+            json.dump(lex, f)
     except LexicalError as err:
         error('Lexical error occured {}'.format(err))
 

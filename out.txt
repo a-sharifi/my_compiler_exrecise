@@ -1,0 +1,1 @@
+[["keyword", "ARRAY"], ["punctuation", "OPEN_BRACKET"], ["digit", "DIGIT", "1"], ["dotdot", "DOTDOT"], ["digit", "DIGIT", "100"], ["punctuation", "CLOSE_BRACKET"], ["keyword", "OF"], ["keyword", "INTEGER"]]
