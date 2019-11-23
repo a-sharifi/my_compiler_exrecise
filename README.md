@@ -10,7 +10,7 @@ In two **phases**
 2. Syntax analyzer
 ---   
 ## Lexical analyzer
-![my simple lexical definite final autonama](Lexical_analizer/my_scanner_diagram.png "lexical definite final autonama(DFA)")
+![my simple lexical definite final autonama](https://github.com/amirsharifi74/my_compiler_exrecise/blob/master/lexical_analizer/my_scanner_diagram.png "lexical definite final autonama(DFA)")
 
 ### run
 
