@@ -12,8 +12,9 @@ In two **phases**
 ## Lexical analyzer
 ![my simple lexical definite final autonama](https://github.com/amirsharifi74/my_compiler_exrecise/blob/master/lexical_analizer/my_scanner_diagram.png "lexical definite final autonama(DFA)")
 
-### run
+### Run
 
+`git clone https://github.com/amirsharifi74/my_compiler_exrecise.git`
 
 `python3 lexical_analizer/scanner.py -i <input_file> -o <output_file>`
 
@@ -51,7 +52,7 @@ In two **phases**
 | ----------- | ---------- | ------------------------------ | ------- |
 | -i          | --input    | path to input tokens file | out.txt |
 
-### run
+### Run
 
 `python3 syntax_analizer/parser.py  -i <your_tokens_file_path>`
 
