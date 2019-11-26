@@ -26,7 +26,7 @@ In two **phases**
 | -i          | --input    | path to outout source code file | test.pp |
 
 ## Syntax analyzer
-   Simple grammer to detect array of pascal language
+   Simple grammer to detect array of our custum language(my language name is amir)
    Give output of Lexical analizer(tokens) and get the syntax error in CMD
    the rest of the language grammer is similar to this
 

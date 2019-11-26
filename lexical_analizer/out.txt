@@ -1,1 +1,0 @@
-[('ID', 'amir'), ('ID', 'sharifi'), ('Digit', '1995'), ('relop', 'EQ'), ('Digit', '12')]

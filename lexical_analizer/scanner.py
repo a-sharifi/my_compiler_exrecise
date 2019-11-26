@@ -260,7 +260,7 @@ class Scanner:
 def main():
     ap = argparse.ArgumentParser()
 
-    ap.add_argument("-i", "--input", required=False, default='test.pp',
+    ap.add_argument("-i", "--input", required=False, default='test.amir',
                 help="path to input source code file")
 
     ap.add_argument("-o", "--output", required=False, default='out.txt',
@@ -282,15 +282,7 @@ def main():
         error('Lexical error occured {}'.format(err))
 
 
-def test():
-    try:
-        handler = Scanner()
-        print(list(handler.scanner(
-            '(.. 12.22E-10  amir  = 10 then else )  [ @] \n  ')))
-    except LexicalError as err:
-        error('Lexical error occured {}'.format(err))
 
 if __name__ == "__main__":
 
-    # test()
     main()
