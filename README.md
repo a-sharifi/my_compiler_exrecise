@@ -28,7 +28,7 @@ In two **phases**
 ## Syntax analyzer
    Simple grammer to detect array of our custum language(my language name is amir)
    Give output of Lexical analizer(tokens) and get the syntax error in CMD
-   the rest of the language grammer is similar to this
+   the rest of the language grammer is similar to this 
 
 ### Grammer
    ```
@@ -46,7 +46,6 @@ In two **phases**
 
    ```
 
-
 ### params
 | Short_param | Long_param | description                    | default |
 | ----------- | ---------- | ------------------------------ | ------- |
@@ -56,3 +55,25 @@ In two **phases**
 
 `python3 syntax_analizer/parser.py  -i <your_tokens_file_path>`
 
+
+--- 
+## Impilimentation with antlr4
+[Antlr4 Github page](https://github.com/antlr/antlr4 "Antlr's Homepage")
+
+### installation antlr4
+[getting start with antlr4](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md)
+
+Dont forget to install `pip install antlr4-python3-runtime`
+
+**caution**: for running my sample code you should generate code for python 
+
+```
+cd antlr/
+antlr4 -Dlanguage=Python3 Array.g4
+```
+### Run antlr
+First of all write your code in test.pp
+```
+cd antlr/
+python3 ArrayDetector.py
+```

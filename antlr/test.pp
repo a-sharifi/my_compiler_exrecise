@@ -1,0 +1,1 @@
+array [ 10 .. 10 ]of integer

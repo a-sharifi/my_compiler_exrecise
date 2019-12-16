@@ -32,7 +32,7 @@ class Parser:
             self._lookahead = self._next_token()
 
         else:
-            raise SyntaxError
+            raise SyntaxError ('error occured!!!')
 
     def _simple(self):
         if self._lookahead[0] == 'keyword' and self._lookahead[1] == 'INTEGER':
@@ -47,7 +47,7 @@ class Parser:
             self._match('DIGIT')
         
         else:
-            raise SyntaxError
+            raise SyntaxError ('error occured!!!')
     
     def _type(self):
     
@@ -69,7 +69,7 @@ class Parser:
             print('3')
 
         else:
-            raise SyntaxError
+            raise SyntaxError ('error occured!!!')
 
     def run(self):
         try:
